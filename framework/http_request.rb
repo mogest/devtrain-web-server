@@ -23,6 +23,10 @@ class HTTPRequest
     METHODS_WITH_BODY.include?(@method)
   end
 
+  def content_type
+    @headers['content-type']&.split(";", 2)&.first
+  end
+
   def self.from_status_line(line)
     matches = line.strip.match(/^([A-Z]+) ([^ ]+) HTTP\/(1\.[01])/)
 
