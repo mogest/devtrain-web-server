@@ -38,10 +38,10 @@ class Router
       if controller.response
         controller.response
       else
-        HTTPResponse.new(500, "Server error", "Controller did not call 'render'")
+        HTTPResponse.new(500, body: "Controller did not call 'render'")
       end
     else
-      HTTPResponse.new(404, 'File Not Found', body: 'File not found')
+      HTTPResponse.new(404, body: 'File not found')
     end
   end
 

@@ -21,14 +21,14 @@ class HTTPConnection
     Router.new(@request).run
 
   rescue LengthRequiredError
-    HTTPResponse.new(411, 'Length Required')
+    HTTPResponse.new(411)
   rescue HTTPRequest::InvalidMethodError
-    HTTPResponse.new(405, 'Method Not Allowed')
+    HTTPResponse.new(405)
   rescue HTTPRequest::ParseError
-    HTTPResponse.new(400, 'Bad Request')
+    HTTPResponse.new(400)
   rescue => e
     HTTPResponse.new(
-      500, 'Server Error',
+      500,
       headers: {"content-type": "text/plain"},
       body: "#{e.class.name}\n#{e.message}\n\n#{e.backtrace.join("\n")}"
     )

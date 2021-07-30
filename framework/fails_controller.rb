@@ -12,7 +12,7 @@ class FailsController
     if type.include?("/")
       headers['content-type'] = type
 
-      @response = HTTPResponse.new(status, "", version: @request.version, headers: headers, body: body)
+      @response = HTTPResponse.new(status, version: @request.version, headers: headers, body: body)
     else
       raise "Unknown type"
     end
